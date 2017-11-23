@@ -1,6 +1,10 @@
 Symfony Git Information
 =========================
 
+![GitSymfonyToolbar](git-extension-toolbar.png "GitSymfonyToolbar")
+
+![GitSymfony](git-extension.png "GitSymfonyExtension")
+
 ### Install it with Composer
 
     composer require jbtcd/symfony-git-information
