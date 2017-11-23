@@ -1,9 +1,11 @@
 Symfony Git Information
 =========================
 
+### Git Symfony Toolbar
 ![GitSymfonyToolbar](git-extension-toolbar.png "GitSymfonyToolbar")
 
-![GitSymfony](git-extension.png "GitSymfonyExtension")
+### Git Symfony Profiler
+![GitSymfonyProfiler](git-extension.png "GitSymfonyProfilerExtension")
 
 ### Install it with Composer
 
