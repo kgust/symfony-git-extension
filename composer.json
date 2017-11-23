@@ -1,0 +1,21 @@
+{
+  "name": "jbtcd/symfony-git-information",
+  "type": "symfony-bundle",
+  "description": "Get Git information in symfony debug toolbar",
+  "keywords": ["symfony","git","debug","toolbar"],
+  "homepage": "https://gitlab.com/jbthecrazydude/symfony-git",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jonah Böther"
+    }
+  ],
+  "require": {
+    "symfony/symfony": "3.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Jbtcd\\SymfonyGitInformation\\": "."
+    }
+  }
+}

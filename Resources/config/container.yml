@@ -1,0 +1,14 @@
+parameters:
+    symfony_git_information.data_collector.template: "SymfonyGitInformation:Collector:git"
+
+services:
+    data_collector.datacollector_git:
+        class: Jbtcd\SymfonyGitInformation\DataCollector\GitDataCollector
+        arguments:
+          - '%symfony_git_information.max_commits%'
+          - '%symfony_git_information.repository_name%'
+          - '%symfony_git_information.repository_url%'
+          - '%symfony_git_information.repository_commit_url%'
+          - '%symfony_git_information.repository_branch_url%'
+        tags:
+          - { name: data_collector, template: '%symfony_git_information.data_collector.template%', id: 'git' }
