@@ -31,9 +31,9 @@
                 <div class="sf-toolbar-info-piece">
                     <b>Commit Id</b>
                     {% if collector.commiturl != '' %}
-                        <span><a href="{{ collector.commiturl }}/{{ collector.lastCommit.id }}" target="_blank">{{ collector.lastCommit.id[:8] }}</a></span>
+                        <span><a href="{{ collector.commiturl }}/{{ collector.lastCommit.id }}" target="_blank">{{ collector.lastCommit.id[:collector.commitIdLength] }}</a></span>
                     {% else %}
-                        <span>{{ collector.lastCommit.id[:8] }}</span>
+                        <span>{{ collector.lastCommit.id[:collector.commitIdLength] }}</span>
                     {% endif %}
                 </div>
                 {% if collector.lastCommit.merge is defined %}
@@ -98,6 +98,10 @@
                 {% endif %}
                 <span class="label">Current Branch</span>
             </div>
+            <div class="metric">
+                <span class="value">{{ collector.timing }} <span class="unit">ms</span></span>
+                <span class="label">Timing</span>
+            </div>
         </div>
         <h2>Commits <small>({{ collector.commits|length }})</small></h2>
         <table>
@@ -115,9 +119,9 @@
                 <tr>
                     <td class="font-normal text-muted nowrap">{{ loop.revindex }}</td>
                     {% if collector.commiturl != '' %}
-                        <td class="color-normal nowrap"><a href="{{ collector.commiturl }}/{{ commit.id }}">{{ commit.id[:8] }}</a></td>
+                        <td class="color-normal nowrap"><a href="{{ collector.commiturl }}/{{ commit.id }}">{{ commit.id[:collector.commitIdLength] }}</a></td>
                     {% else %}
-                        <td class="nowrap">{{ commit.id[:8] }}</td>
+                        <td class="nowrap">{{ commit.id[:collector.commitIdLength] }}</td>
                     {% endif %}
                     <td class="nowrap">{{ commit.date|date("d.m.Y H:i:s") }}</td>
                     {% if commit.email is defined %}

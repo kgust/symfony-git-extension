@@ -17,14 +17,16 @@ class GitDataCollector extends DataCollector
      * @param $repositoryUrl
      * @param $repositoryCommitUrl
      * @param $repositoryBranchUrl
+     * @param $commitIdLength
      */
-	public function __construct($maxCommits, $repositoryName, $repositoryUrl,$repositoryCommitUrl, $repositoryBranchUrl)
+	public function __construct($maxCommits, $repositoryName, $repositoryUrl,$repositoryCommitUrl, $repositoryBranchUrl, $commitIdLength)
 	{
 		$this->data['maxCommits'] = $maxCommits;
         $this->data['repositoryName'] = $repositoryName;
         $this->data['repositoryUrl'] = $repositoryUrl;
         $this->data['repositoryCommitUrl'] = $repositoryCommitUrl;
         $this->data['repositoryBranchUrl'] = $repositoryBranchUrl;
+        $this->data['commitIdLength'] = $commitIdLength;
 	}
 
 	/**
@@ -36,6 +38,7 @@ class GitDataCollector extends DataCollector
 	 */
 	public function collect(Request $request, Response $response, \Exception $exception = null)
 	{
+	    $timer['start'] = microtime(true);
 	    $this->data['gitData'] = false;
 
         exec("git branch", $data);
@@ -52,7 +55,15 @@ class GitDataCollector extends DataCollector
         if ($this->getData("gitData")) {
             $this->data['commits'] = $this->fetchCommits($this->getData('maxCommits'));
         }
+        $timer['stop'] = microtime(true);
+
+        $this->data['timing'] = round($timer['stop'] - $timer['start'], 3)*1000;
 	}
+
+	public function getTiming()
+    {
+        return $this->getData('timing');
+    }
 
 	public function getRepositoryName()
     {
@@ -77,6 +88,11 @@ class GitDataCollector extends DataCollector
 	public function getLastCommit()
     {
         return $this->getData('commits')[0];
+    }
+
+    public function getCommitIdLength()
+    {
+        return $this->getData('commitIdLength');
     }
 
 	/**

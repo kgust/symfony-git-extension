@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode->children()->scalarNode('repository_url')->end();
         $rootNode->children()->scalarNode('repository_commit_url')->end();
         $rootNode->children()->scalarNode('repository_branch_url')->end();
+        $rootNode->children()->scalarNode('commit_id_length')->end();
 
 		return $treeBuilder;
 	}
