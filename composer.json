@@ -1,5 +1,5 @@
 {
-  "name": "jbtcd/symfony-git-information",
+  "name": "kgust/symfony-git-information",
   "type": "symfony-bundle",
   "description": "Get Git information in symfony debug toolbar",
   "keywords": ["symfony","git","debug","toolbar"],
